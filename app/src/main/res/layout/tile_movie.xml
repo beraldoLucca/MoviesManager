@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/nameTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/name"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/anoLancamentoTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/release" />
+
+    <TextView
+        android:id="@+id/supplierTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/supplier" />
+
+    <CheckBox
+        android:id="@+id/flagCb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/flag" />
+
+    <TextView
+        android:id="@+id/noteTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/given_note" />
+
+    <TextView
+        android:id="@+id/genreTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/genre" />
+
+</LinearLayout>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MoviesManager</string>
+    <string name="close">Fechar</string>
+    <string name="add_movie">Add Movie</string>
+    <string name="name">Nome</string>
+    <string name="release">Ano de lançamento</string>
+    <string name="supplier">Estúdio ou produtora</string>
+    <string name="duration">Tempo de duração(em minutos)</string>
+    <string name="flag">Filme já visualizado</string>
+    <string name="note">Nota(de 0 a 10)</string>
+    <string name="given_note">Nota</string>
+    <string name="genre">Genero</string>
+    <string name="save">salvar</string>
+    <string name="remove">Remover</string>
+    <string name="edit">Editar</string>
+    <string name="ensuring_inputs_person_activity">Garanta que o nome e o valor foram inseridos</string>
+</resources>
