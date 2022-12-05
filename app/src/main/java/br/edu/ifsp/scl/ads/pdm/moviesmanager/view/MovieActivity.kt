@@ -8,6 +8,7 @@ import br.edu.ifsp.scl.ads.pdm.moviesmanager.R
 import br.edu.ifsp.scl.ads.pdm.moviesmanager.databinding.ActivityMovieBinding
 import br.edu.ifsp.scl.ads.pdm.moviesmanager.model.Constant.EXTRA_MOVIE
 import br.edu.ifsp.scl.ads.pdm.moviesmanager.model.Movie
+import br.edu.ifsp.scl.ads.pdm.moviesmanager.model.enums.Genres
 import java.util.*
 
 
@@ -17,43 +18,48 @@ class MovieActivity : AppCompatActivity() {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(amb.root)
         setContentView(amb.root)
 
         if (intent.getBooleanExtra("VIEW_MOVIE", false)){
             amb.nameEt.isEnabled = false
             amb.anoLancamentoEt.isEnabled = false
             amb.durationEt.isEnabled = false
-            amb.genreEt.isEnabled = false
+            amb.genreSp.isEnabled = false
             amb.noteEt.isEnabled = false
             amb.saveBt.text = getString(R.string.close)
         }
 
         val receivedMovie = intent.getParcelableExtra<Movie>(EXTRA_MOVIE)
         receivedMovie?.let { movie ->
-            amb.nameEt.setText(movie.name)
+            amb.nameEt.isEnabled = false
             amb.anoLancamentoEt.setText(movie.yearReleased.toString())
             amb.durationEt.setText(movie.duration.toString())
-            amb.genreEt.setText(movie.genre)
+            //amb.genreSp.setSelection(movie.genre)
             amb.noteEt.setText(movie.note.toString())
             amb.supplierEt.setText(movie.supplier.toString())
+
+            for (i in  0 until Genres.values().size) {
+                if(amb.genreSp.toString() == Genres.values()[i].toString())
+                    amb.genreSp.setSelection(i)
+            }
         }
 
 
         amb.saveBt.setOnClickListener {
             if (
                 amb.nameEt.text.isNotEmpty()
-//                amb.valorPagoEt.text.isNotEmpty()
             ) {
+                val genrer = amb.genreSp.selectedItem.toString()
+                val genrerFromEnum = Genres.valueOf(genrer)
                 val movie = Movie(
                     id = receivedMovie?.id ?: Random(System.currentTimeMillis()).nextInt(),
                     name = amb.nameEt.text.toString(),
-                    yearReleased = amb.anoLancamentoEt,
+                    yearReleased = amb.anoLancamentoEt.text.toString(),
                     duration = amb.durationEt.text.toString().toDouble(),
-                    genre = amb.genreEt.text.toString(),
+                    genre = genrerFromEnum,
                     note = amb.noteEt.text.toString().toDouble(),
-                    supplier = amb.supplierEt.toString(),
-                    viewed = amb.flagCb.text.toString().isNotEmpty()
+                    supplier = amb.supplierEt.text.toString(),
+                    viewed = amb.flagCb.isChecked
                 )
                 setResult(
                     RESULT_OK,

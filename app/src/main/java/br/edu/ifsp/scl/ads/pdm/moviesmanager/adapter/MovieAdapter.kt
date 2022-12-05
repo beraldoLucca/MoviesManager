@@ -33,7 +33,7 @@ class MovieAdapter(
                     false
                 )
 
-            val tilePersonHolder = TileMovieHolder(
+            val tileMovieHolder = TileMovieHolder(
                 movieTileView.findViewById(R.id.nameTv),
                 movieTileView.findViewById(R.id.anoLancamentoTv),
                 movieTileView.findViewById(R.id.supplierTv),
@@ -41,19 +41,16 @@ class MovieAdapter(
                 movieTileView.findViewById(R.id.noteTv),
                 movieTileView.findViewById(R.id.genreTv)
             )
-            movieTileView.tag = tilePersonHolder
+            movieTileView.tag = tileMovieHolder
         }
 
         with(movieTileView?.tag as TileMovieHolder) {
             nameTv.text = movie.name
-//            paidValueTv.text = String.format("Pagou: R$ %.2f", person.paidValue)
-//            if (forCalculate) {
-//                valueToPayTv.text = String.format("Deve Pagar: R$ %.2f", person.valueToPay)
-//                valueToReceiveTv.text = String.format("Deve Receber: R$ %.2f", person.valueToReceive)
-//            } else {
-//                valueToPayTv.visibility = View.GONE
-//                valueToReceiveTv.visibility = View.GONE
-//            }
+            anoLancamentoTv.text = String.format("Filme foi lançado em: R$ %s", movie.yearReleased.toString())
+            supplierTv.text = String.format("Produtora:  %s", movie.supplier.toString())
+            flagCb.isChecked = movie.viewed
+            noteTv.text = String.format("Nota: %s", movie.note.toString())
+            genreTv.text = String.format("Gênero: R$ %s", movie.genre.toString())
         }
 
         return movieTileView

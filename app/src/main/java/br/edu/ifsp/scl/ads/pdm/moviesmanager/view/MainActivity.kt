@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         ) { result ->
             if (result.resultCode == RESULT_OK) {
                 val person = result.data?.getParcelableExtra<Movie>(EXTRA_MOVIE)
-                movie?.let { _movie->
+                person?.let { _movie->
 
                     if(movieList.any { it.id == _movie.id }){
                         val pos = movieList.indexOfFirst { it.id == _movie.id }
@@ -89,6 +89,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     override fun onCreateContextMenu(
         menu: ContextMenu?,
         v: View?,
@@ -99,6 +100,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
         val position = (item.menuInfo as AdapterView.AdapterContextMenuInfo).position
+        val movie = movieList[position]
         return when(item.itemId){
             R.id.removeMovieMi -> {
                 movieList.removeAt(position)
@@ -106,13 +108,15 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.editMovieMi -> {
-                val person = movieList[position]
-                carl.launch(
-                    Intent(this, MovieActivity::class.java).putExtra(EXTRA_MOVIE, person)
-                )
+                val movieIntent = Intent(this, MovieActivity::class.java)
+                movieIntent.putExtra(EXTRA_MOVIE, movie)
+                movieIntent.putExtra(VIEW_MOVIE, false)
+                carl.launch(movieIntent)
                 true
             }
             else -> { false }
         }
     }
+
+
 }
