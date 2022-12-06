@@ -46,11 +46,11 @@ class MovieAdapter(
 
         with(movieTileView?.tag as TileMovieHolder) {
             nameTv.text = movie.name
-            anoLancamentoTv.text = String.format("Filme foi lançado em: R$ %s", movie.yearReleased.toString())
+            anoLancamentoTv.text = String.format("Filme foi lançado em: %s", movie.yearReleased.toString())
             supplierTv.text = String.format("Produtora:  %s", movie.supplier.toString())
             flagCb.isChecked = movie.viewed
             noteTv.text = String.format("Nota: %s", movie.note.toString())
-            genreTv.text = String.format("Gênero: R$ %s", movie.genre.toString())
+            genreTv.text = String.format("Gênero: %s", movie.genre.toString())
         }
 
         return movieTileView

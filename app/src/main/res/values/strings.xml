@@ -13,7 +13,7 @@
     <string name="save">salvar</string>
     <string name="remove">Remover</string>
     <string name="edit">Editar</string>
-    <string name="ensuring_inputs_movie">Garanta que o nome e o valor foram inseridos</string>
+    <string name="ensuring_inputs_movie">Garanta que o nome foi inserido</string>
 
     <string-array name="array">
         <item>  Romance</item>
